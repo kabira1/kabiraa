@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Convertisseur d'unités</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+h2 {
+      color: #333;
+    }
+div {
+      background-color: #fff;                  
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+label {
+      font-weight: bold;
+      color: #555;
+    }
+input[type="number"],
+    select {
+      padding: 5px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+button {
+      padding: 8px 15px;
+      background-color: #4CAF50;             
+      color: #fff;
+      border: none;
+      border-radius: 3px; 
+      cursor: pointer;
+    }
+button:hover {
+      background-color: #45a049;
+    }
+span {
+      font-style: italic;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Convertisseur d'unités</h2>
+
+<div>
+  <label for="tempInput">Température:</label>
+  <input type="number" id="tempInput">
+  <select id="tempUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+  <button onclick="convertTemperature()">Convertir</button>
+  <span id="tempResult"></span>
+</div>
+
+<div>
+  <label for="lengthInput">Longueur:</label>
+  <input type="number" id="lengthInput">
+  <select id="lengthUnit">
+    <option value="meters">Mètres</option>
+    <option value="feet">Pieds</option>
+  </select>
+  <button onclick="convertLength()">Convertir</button>
+  <span id="lengthResult"></span>
+</div>
+
+<div>
+  <label for="weightInput">Poids:</label>
+  <input type="number" id="weightInput">
+  <select id="weightUnit">
+    <option value="kilograms">Kilogrammes</option>
+    <option value="pounds">Livres</option>
+  </select>
+  <button onclick="convertWeight()">Convertir</button>
+  <span id="weightResult"></span>
+</div>
+
+<script>
+  function convertTemperature() {
+    var input = parseFloat(document.getElementById('tempInput').value);
+    var unit = document.getElementById('tempUnit').value;
+    var result;
+if (unit === 'celsius') {
+      result = (input * 9/5) + 32;
+      document.getElementById('tempResult').innerHTML = result.toFixed(2) + ' °F';
+    } else if (unit === 'fahrenheit') {
+      result = (input - 32) * 5/9;
+      document.getElementById('tempResult').innerHTML = result.toFixed(2) + ' °C';
+    }
+  }
+
+function convertLength() {
+    var input = parseFloat(document.getElementById('lengthInput').value);
+    var unit = document.getElementById('lengthUnit').value;   
+    var result;
+if (unit === 'meters') {
+      result = input * 3.28084;
+      document.getElementById('lengthResult').innerHTML= result.toFixed(2) + ' pieds';
+    } else if (unit === 'feet') {
+      result = input / 3.28084;
+      document.getElementById('lengthResult').innerHTML = result.toFixed(2) + ' mètres';
+    }
+  }
+  
+function convertWeight() {
+    var input = parseFloat(document.getElementById('weightInput').value);
+    var unit = document.getElementById('weightUnit').value;
+    var result;
+ if (unit === 'kilograms') {
+      result = input * 2.20462;
+      document.getElementById('weightResult').innerHTML = result.toFixed(2) + ' livres';
+    } else if (unit === 'pounds') {
+      result = input / 2.20462;
+      document.getElementById('weightResult').innerHTML = result.toFixed(2) + ' kilogrammes';
+    }
+  }
+</script>
+</body> 
+</html> 
